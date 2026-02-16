@@ -5,8 +5,12 @@ Example:
 ```
  export KEYCLOAK_URL=https://foo.bar.localdomain
  export KEYCLOAK_BASE_PATH=/auth # Only users of the legacy Wildfly distribution will need to set this.
+ export KEYCLOAK_REALM=master
  export KEYCLOAK_CLIENT_ID=[KEYCLOAK_CLIENT_ID]
  export KEYCLOAK_CLIENT_SECRET=[KEYCLOAK_CLIENT_SECRET]
+ export KEYCLOAK_CLIENT_TIMEOUT=30
+ export KEYCLOAK_TLS_INSECURE_SKIP_VERIFY=false
+ export KEYCLOAK_CACERT="$(cat /path/to/ca.pem)"
  export RED_HAT_SSO=1 # Only users of the RH-SSO distribution will need to set this.
 
  terraformer import keycloak --resources=realms
@@ -14,7 +18,7 @@ Example:
  terraformer import keycloak --resources=realms --targets realmA,realmB
 ```
 
-Here is the list of resources which are currently supported by Keycloak provider v.4.0.1:
+Here is the list of resources which are currently supported by the Keycloak provider:
 
 - `realms`
   - `keycloak_default_groups`
