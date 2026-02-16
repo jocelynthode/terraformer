@@ -15,8 +15,6 @@
 package keycloak
 
 import (
-	"strings"
-
 	"github.com/GoogleCloudPlatform/terraformer/terraformutils"
 	"github.com/keycloak/terraform-provider-keycloak/keycloak"
 )
@@ -50,11 +48,12 @@ func (g RealmGenerator) createOpenidClientScopesResources(realmID, clientID, cli
 		"keycloak_openid_client_"+t+"_scopes",
 		"keycloak",
 		map[string]string{
-			"realm_id":    realmID,
-			"client_id":   clientID,
-			t + "_scopes": strings.Join(scopes, ","),
+			"realm_id":  realmID,
+			"client_id": clientID,
 		},
 		[]string{},
-		map[string]interface{}{},
+		map[string]interface{}{
+			t + "_scopes": stringSliceToInterfaceSlice(scopes),
+		},
 	)
 }

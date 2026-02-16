@@ -15,8 +15,6 @@
 package keycloak
 
 import (
-	"strings"
-
 	"github.com/GoogleCloudPlatform/terraformer/terraformutils"
 	"github.com/keycloak/terraform-provider-keycloak/keycloak"
 )
@@ -62,7 +60,6 @@ func (g RealmGenerator) createGroupMembershipsResource(realmID, groupID, groupNa
 		map[string]string{
 			"realm_id": realmID,
 			"group_id": groupID,
-			"members":  strings.Join(members, ","),
 		},
 		[]string{},
 		map[string]interface{}{},
@@ -76,9 +73,8 @@ func (g RealmGenerator) createGroupRolesResource(realmID, groupID, groupName str
 		"keycloak_group_roles",
 		"keycloak",
 		map[string]string{
-			"realm_id":  realmID,
-			"group_id":  groupID,
-			"roles_ids": strings.Join(roles, ","),
+			"realm_id": realmID,
+			"group_id": groupID,
 		},
 		[]string{},
 		map[string]interface{}{},

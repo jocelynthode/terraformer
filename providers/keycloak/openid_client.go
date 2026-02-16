@@ -50,7 +50,7 @@ func (g RealmGenerator) createServiceAccountClientRolesResources(realmID string,
 					continue
 				}
 				resources = append(resources, terraformutils.NewResource(
-					realmID+"/"+user.Id+"/"+role.ClientId+"/"+role.Name,
+					user.Id+"/"+role.Id,
 					"openid_client_service_account_role_"+normalizeResourceName(realmID)+"_"+normalizeResourceName(mapServiceAccountIds[user.Id]["ClientId"])+"_"+normalizeResourceName(mapClientIDs[role.ClientId])+"_"+normalizeResourceName(role.Name),
 					"keycloak_openid_client_service_account_role",
 					"keycloak",

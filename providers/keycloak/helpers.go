@@ -67,3 +67,11 @@ func normalizeResourceName(s string) string {
 	normalizedString, _ := normalize.String(r.Replace(strings.ToLower(s)))
 	return normalizedString
 }
+
+func stringSliceToInterfaceSlice(values []string) []interface{} {
+	result := make([]interface{}, len(values))
+	for i, value := range values {
+		result[i] = value
+	}
+	return result
+}
